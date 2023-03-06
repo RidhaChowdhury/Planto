@@ -1,0 +1,11 @@
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.exe
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.deps.json
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.runtimeconfig.json
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.pdb
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

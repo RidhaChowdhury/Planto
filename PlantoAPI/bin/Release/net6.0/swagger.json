@@ -1,0 +1,9 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Planto API",
+    "description": "Making the Plants you love",
+    "version": "v1"
+  },
+  "paths": { }
+}
