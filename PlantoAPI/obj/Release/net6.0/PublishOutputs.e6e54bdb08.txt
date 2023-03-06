@@ -5,7 +5,14 @@ C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.deps.json
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.runtimeconfig.json
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\PlantoAPI.pdb
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Dapper.dll
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
