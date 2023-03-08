@@ -4,25 +4,25 @@ import axios from 'axios';
 
 export default function App() {
 
-  const [test, setTest] = React.useState<any>("test");
+  const [plants, setPlants] = React.useState<any>([]);
   
   React.useEffect(() => {
     fetch("https://plantoapi.azurewebsites.net/getPlants")
     .then(response => response.json())
-    .then(data => {
-      // handle the data
-      console.log(data);
+    .then((data: any) => {
+      setPlants((_prev : any) => data.plants);
     })
     .catch(error => {
       // handle the error
       console.error(error);
     });
-  }
-  , []);
+  }, []);
   
   return (
     <NativeBaseProvider>
-      <Text>{test}</Text>
+      {
+      plants.map((el: any, index : number) => <Text key = {index}>{el.PlantName}</Text>)
+      }
     </NativeBaseProvider>
   );
 }

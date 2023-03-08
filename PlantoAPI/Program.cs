@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.OpenApi.Models;
 using PlantoAPI;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,18 +30,31 @@ app.MapGet("/test", async context => {
     await context.Response.WriteAsync(jsonResponse);
 });
 
-app.MapGet("/getPlants", async context => {
-    SqlConnectionStringBuilder builder = SqlConnectionProvider.GetSqlConnectionString();
 
-    using (SqlConnection connection = new SqlConnection(builder.ConnectionString)) {
-        connection.Open();
-        var sql = "SELECT PlantName, id, LastWatered FROM Plant";
-        var plants = connection.Query<Plant>(sql);
-        string jsonResponse = JsonSerializer.Serialize(plants);
-        context.Response.Headers.Add("Content-Type", "application/json");
-        await context.Response.WriteAsync(jsonResponse);
+app.MapGet("/getPlants", async context => {
+    try {
+        SqlConnectionStringBuilder builder = SqlConnectionProvider.GetSqlConnectionString();
+
+        using (SqlConnection connection = new SqlConnection(builder.ConnectionString)) {
+            await connection.OpenAsync();
+            var sql = "SELECT * FROM Plant";
+            var plants = await connection.QueryAsync<Plant>(sql);
+
+            var response = new { plants = plants };
+            string jsonResponse = JsonSerializer.Serialize(response);
+            context.Response.Headers.Add("Content-Type", "application/json");
+            await context.Response.WriteAsync(jsonResponse);
+        }
+    }
+    catch (Exception ex) {
+        // Log the exception and return an error response
+        // to the client if something goes wrong
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync(ex.Message);
     }
 });
+
+
 
 
 app.Run();

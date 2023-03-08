@@ -30,3 +30,10 @@ C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.
 C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Debug\net6.0\PlantoAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\ProgrammingProjects\Planto\PlantoAPI\obj\Debug\net6.0\PlantoAPI.csproj.CopyComplete
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\Dapper.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\ProgrammingProjects\Planto\PlantoAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
