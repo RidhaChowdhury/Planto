@@ -10,7 +10,8 @@ export default function PlantCard(props: {plant: Plant}) {
             </View>
             <View style={styles.infoSpace}>
                 <View style={styles.plantProperties}>
-                    <Text>{props.plant.Name}</Text>
+                    <Text style={{fontWeight:"600", fontSize:20}}>{props.plant.Name}</Text>
+                    <Text style={{fontWeight:"300", fontSize:15}}>{props.plant.DevelopmentStage}</Text>
                 </View>
                 <View style={styles.plantCare}>
                 </View>
@@ -21,8 +22,10 @@ export default function PlantCard(props: {plant: Plant}) {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "gray",
+        backgroundColor: "white",
         borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#606060",
         padding: 5,
         margin: 10,
         width: "90%",
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
             height: 2,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+        shadowRadius: 4,
         elevation: 5,
         flexDirection: "row",
         justifyContent: "flex-start",
@@ -53,7 +56,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: "space-around",
         alignItems: "flex-start",
-        backgroundColor: "red",
         padding: 5,
         width: "80%",
     },
@@ -64,10 +66,10 @@ const styles = StyleSheet.create({
     plantProperties: {
         flexDirection: 'column',
         justifyContent: "space-around",
-        alignItems: "center",
-        backgroundColor: "blue",
+        alignItems: "flex-start",
         textAlign: "left",
-        padding: 5,
+        borderBottomWidth: 1,
+        width: "100%",
     },
     plantCare: {
     }

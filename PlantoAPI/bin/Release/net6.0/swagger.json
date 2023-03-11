@@ -40,11 +40,14 @@
           "format": "uuid",
           "type": "string"
         },
-        "plantName": {
+        "name": {
           "type": "string"
         },
         "lastWatered": {
           "format": "date-time",
+          "type": "string"
+        },
+        "developmentStage": {
           "type": "string"
         }
       }

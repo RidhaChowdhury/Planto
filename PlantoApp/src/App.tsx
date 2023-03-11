@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, Box, Text, View, Button, HStack, Icon, Image, AddIcon, Fab, SearchIcon,Modal, Center, Spinner, Heading} from "native-base";
+import { NativeBaseProvider, Box, Text, View, Button, HStack, Header, Icon, Image, FlatList, AddIcon, Fab, SearchIcon,Modal, Center, Spinner, Heading} from "native-base";
 import axios from 'axios';
 import { StyleSheet, SafeAreaView, Dimensions} from "react-native";
 import AddPlant from "./components/AddPlant";
@@ -12,7 +12,7 @@ function assertUnreachable(_: never): never {
 
 export default function App() {
 
-  const [plants, setPlants] = React.useState<any>([{platName: 'DUDA'}]);
+  const [plants, setPlants] = React.useState<any>([{Name: 'DUDA'}]);
   const [showModal, setShowModal]= React.useState<boolean>(false);
   
   React.useEffect(() => {
@@ -27,8 +27,6 @@ export default function App() {
       });
   }, []);
   
-
-  console.warn(plants);
 
   async function addNewPlantToDatabase(newPlant : Plant) {
     await axios.post('https://plantoapi.azurewebsites.net/addPlant', newPlant)
@@ -64,17 +62,14 @@ export default function App() {
         <View>
           <View style = {styles.header}>
               <HStack style = {styles.headerContent}>
-                <Text style = {styles.title}>Planto</Text>
+                <Heading style = {styles.title}>Planto</Heading>
                 <Button style = {styles.addPlant} onPress={() => { setShowModal(() => true);}}>
                     <AddIcon/>
                 </Button>
               </HStack>
           </View>
           <View style = {styles.plantList}>
-            <PlantCard plant={plants[0]}/>
-              {
-              plants.map((el: any, index : number) => <Text key = {index}>{el.PlantName}</Text>)
-              }
+          <FlatList<Plant> data={plants} renderItem={({item}) => <PlantCard key = {item.Id} plant={item} />} keyExtractor={item => item.Id} />
           </View>
           <AddPlant showModal = {showModal} setShowModal = {setShowModal} onAdd={async(plant : Plant) => {
             handleModalResponse({about: 'be-saved-plant', plant: plant});
@@ -115,9 +110,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: colors.secondary,
+    alignItems: "center",
   },
   title: {
-    paddingTop:20,
     paddingLeft: 10,
     fontSize: 30,
     fontWeight: "bold",
