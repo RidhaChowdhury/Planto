@@ -3,6 +3,17 @@ import { StyleSheet, SafeAreaView, View, Image, Text} from "react-native";
 import {Plant} from "../models/plant.model";
 
 export default function PlantCard(props: {plant: Plant}) {
+    const lastWatered = props.plant.LastWatered;
+    const lastWateredDate = lastWatered ? new Date(lastWatered) : null;
+    let wateredDetails = "";
+    if (lastWateredDate) {
+        const today = new Date();
+        const timeDiff = today.getTime() - lastWateredDate.getTime();
+        wateredDetails = "Last Watered:" + (timeDiff / (1000 * 3600 * 24) > 1 ? 
+            Math.ceil(timeDiff / (1000 * 3600 * 24)) + " days ago"
+            :Math.floor(timeDiff / (1000 * 3600)) + " hours ago");
+    }
+
     return (
         <View style = {styles.card}>
             <View style={styles.iconsSpace}>
@@ -14,6 +25,8 @@ export default function PlantCard(props: {plant: Plant}) {
                     <Text style={{fontWeight:"300", fontSize:15}}>{props.plant.DevelopmentStage}</Text>
                 </View>
                 <View style={styles.plantCare}>
+                    <Text style={{fontWeight:"300", fontSize:15}}>{wateredDetails}</Text>
+
                 </View>
             </View>
         </View>
