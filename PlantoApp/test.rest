@@ -1,1 +1,2 @@
-GET https://plantoapi.azurewebsites.net/getPlants
+//Send a plant with PlantName test and Id 2014c4bb-92de-4dc6-96de-6a3858602f8f to the API at the addPlant endpoint as an https POST request
+POST https://plantoapi.azurewebsites.net/addPlant?PlantName=test&Id=2014c4bb-92de-4dc6-96de-6a3858602f8f

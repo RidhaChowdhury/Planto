@@ -5,5 +5,49 @@
     "description": "Making the Plants you love",
     "version": "v1"
   },
-  "paths": { }
+  "paths": {
+    "/addPlant": {
+      "post": {
+        "tags": [
+          "PlantoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Plant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Plant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "lastWatered": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    }
+  }
 }

@@ -1,9 +1,14 @@
 import React from "react";
-import { NativeBaseProvider, Box, Text, View, Button, HStack, Icon, Image, AddIcon, Modal, Center} from "native-base";
+import { NativeBaseProvider, Box, Text, View, Button, HStack, Icon, Image, AddIcon, Fab, SearchIcon,Modal, Center, Spinner, Heading} from "native-base";
 import axios from 'axios';
-import { StyleSheet, SafeAreaView, StatusBar, Platform, View as ReactView } from "react-native";
+import { StyleSheet, SafeAreaView, Dimensions} from "react-native";
 import AddPlant from "./components/AddPlant";
+import { ModalConcerns, Plant } from "./models/plant.model";
+import PlantCard from "./components/PlantCard";
 
+function assertUnreachable(_: never): never {
+  throw new Error("Didn't expect to get here");
+}
 
 export default function App() {
 
@@ -11,44 +16,73 @@ export default function App() {
   const [showModal, setShowModal]= React.useState<boolean>(false);
   
   React.useEffect(() => {
-    fetch("https://plantoapi.azurewebsites.net/getPlants")
-    .then(response => response.json())
-    .then((data: any) => {
-      setPlants((_prev : any) => data.plants);
-    })
-    .catch(error => {
-      // handle the error
-      console.error(error);
-    });
+    axios.get('https://plantoapi.azurewebsites.net/getPlants')
+      .then(response => {
+        const data = response.data.plants as Plant[];
+        setPlants(data);
+      })
+      .catch(error => {
+        // handle the error
+        console.error(error);
+      });
   }, []);
-
   
+
+  console.warn(plants);
+
+  async function addNewPlantToDatabase(newPlant : Plant) {
+    await axios.post('https://plantoapi.azurewebsites.net/addPlant', newPlant)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  async function handleModalResponse(concern: ModalConcerns) {
+    switch(concern.about) {
+      case  'be-saved-plant':
+        setShowModal(() => false);
+        setPlants((oldPlants: Plant[]) => {
+          return [...oldPlants, concern.plant];
+        });
+        await addNewPlantToDatabase(concern.plant);
+        break;
+      case 'be-closed':
+        setShowModal(() => false);
+        break;
+      default:
+        assertUnreachable(concern);
+        break;
+    }
+  }
+
   return (
     <SafeAreaView style = {styles.global}>
-      <ReactView style = {styles.container} >
       <NativeBaseProvider>
         <View>
           <View style = {styles.header}>
               <HStack style = {styles.headerContent}>
                 <Text style = {styles.title}>Planto</Text>
-                <Button style = {styles.addPlant} onPress={() => {
-                  console.warn("Hello bro");
-                  setShowModal(() => true);
-                  }}>
+                <Button style = {styles.addPlant} onPress={() => { setShowModal(() => true);}}>
                     <AddIcon/>
                 </Button>
               </HStack>
           </View>
-
           <View style = {styles.plantList}>
+            <PlantCard plant={plants[0]}/>
               {
               plants.map((el: any, index : number) => <Text key = {index}>{el.PlantName}</Text>)
               }
           </View>
-          <AddPlant showModal = {showModal} setShowModal = {setShowModal}/>
+          <AddPlant showModal = {showModal} setShowModal = {setShowModal} onAdd={async(plant : Plant) => {
+            handleModalResponse({about: 'be-saved-plant', plant: plant});
+          }}/>
         </View>
+
+        <Fab shadow={2} placement="bottom-right" size="sm" icon={<SearchIcon color="white" name="search" size="4" />} label="Scan a tag" />
       </NativeBaseProvider>
-      </ReactView>
     </SafeAreaView>
   );
 
@@ -63,17 +97,18 @@ const colors = {
   danger:"#F84D51"
 }
 
+const headerHeight = 50;
+const footerHeight = 50;
+const plantListHeight = Dimensions.get('window').height - headerHeight - footerHeight;
+
 const styles = StyleSheet.create({
   global: {
     fontFamily: 'poppins',
     flex: 1,
   },
-  container: {
-     
-  },
   header: {
     backgroundColor: "#fff",
-    height: 50,
+    height: headerHeight,
     width: "100%",
   },
   headerContent: {
@@ -94,7 +129,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   plantList: {
-    height: 50,
+    height: plantListHeight,
     width: "100%",
+  },
+  scanTag: {
+    position: "absolute",
+    bottom: footerHeight + 20,
+    width: "75%",
+    alignSelf: "center",
   }
 });
