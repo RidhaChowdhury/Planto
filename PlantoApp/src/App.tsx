@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, Box, Text, View, Button, HStack, Header, Icon, Image, FlatList, AddIcon, Fab, SearchIcon,Modal, Center, Spinner, Heading} from "native-base";
+import { NativeBaseProvider, Box, Text, View, Button, HStack, Icon, Image, FlatList, AddIcon, Fab, SearchIcon,Modal, Center, Spinner, Heading} from "native-base";
 import axios from 'axios';
 import { StyleSheet, SafeAreaView, Dimensions} from "react-native";
 import AddPlant from "./components/AddPlant";

@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, View, Image, Text} from "react-native";
+import { StyleSheet, SafeAreaView} from "react-native";
+import {View, Image, Text, Pressable} from 'native-base'
 import {Plant} from "../models/plant.model";
 
-export default function PlantCard(props: {plant: Plant}) {
+export default function PlantCard(props: {plant: Plant, onPress?: () => void}) {
     const lastWatered = props.plant.LastWatered;
     const lastWateredDate = lastWatered ? new Date(lastWatered) : null;
     let wateredDetails = "";
@@ -15,21 +16,22 @@ export default function PlantCard(props: {plant: Plant}) {
     }
 
     return (
-        <View style = {styles.card}>
-            <View style={styles.iconsSpace}>
-                <Image source={require("../../assets/plant.png")} style={styles.plantIcon}></Image>
-            </View>
-            <View style={styles.infoSpace}>
-                <View style={styles.plantProperties}>
-                    <Text style={{fontWeight:"600", fontSize:20}}>{props.plant.Name}</Text>
-                    <Text style={{fontWeight:"300", fontSize:15}}>{props.plant.DevelopmentStage}</Text>
+        <Pressable onPress={props.onPress}>
+            <View style = {styles.card}>
+                <View style={styles.iconsSpace}>
+                    <Image source={require("../../assets/plant.png")} style={styles.plantIcon}></Image>
                 </View>
-                <View style={styles.plantCare}>
-                    <Text style={{fontWeight:"300", fontSize:15}}>{wateredDetails}</Text>
-
+                <View style={styles.infoSpace}>
+                    <View style={styles.plantProperties}>
+                        <Text style={{fontWeight:"600", fontSize:20}}>{props.plant.Name}</Text>
+                        <Text style={{fontWeight:"300", fontSize:15}}>{props.plant.DevelopmentStage}</Text>
+                    </View>
+                    <View style={styles.plantCare}>
+                        <Text style={{fontWeight:"300", fontSize:15}}>{wateredDetails}</Text>
+                    </View>
                 </View>
             </View>
-        </View>
+        </Pressable>
     );
 }
 

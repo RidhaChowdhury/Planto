@@ -1,0 +1,8 @@
+{
+    "primary": "#83CF9A",
+    "secondary": "#c1e8cd",
+    "success": "#7CD127",
+    "info": "#7F8CFF",
+    "warning":"#FFD000",
+    "danger":"#F84D51"
+}
